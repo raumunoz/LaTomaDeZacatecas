@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 21c47bae8255b9445a66340e1f6246f9
+timeCreated: 1450410519
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - esfera: {fileID: 157592, guid: 013a69fbbdf5d614aa55c2e20c4edb24, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

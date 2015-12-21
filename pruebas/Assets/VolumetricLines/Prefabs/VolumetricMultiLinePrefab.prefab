@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &124540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 424540}
+  - 114: {fileID: 11424540}
+  m_Layer: 0
+  m_Name: VolumetricMultiLinePrefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &424540
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124540}
+  m_LocalRotation: {x: 0, y: 0, z: .0954079777, w: .995438278}
+  m_LocalPosition: {x: -373, y: 103, z: 538}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11424540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337d0041a7dd7564e81c5f906c45230f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_volumetricLinePrefab: {fileID: 100000, guid: 11530f2b0a0cd2442949827ecbb622f2,
+    type: 2}
+  m_lineVertices:
+  - {x: 70, y: 80, z: 0}
+  - {x: 144.399994, y: 159.899994, z: 0}
+  - {x: 143.399994, y: 259.200012, z: 0}
+  - {x: 72.0299988, y: 352.600006, z: 0}
+  - {x: -10.3999996, y: 368.299988, z: 60.5}
+  - {x: -76.3000031, y: 431.399994, z: 137.600006}
+  - {x: -104.199997, y: 497.100006, z: 217.699997}
+  - {x: -115.699997, y: 516.700012, z: 344.299988}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 124540}
+  m_IsPrefabParent: 1

@@ -1,0 +1,155 @@
+fileFormatVersion: 2
+guid: 9d39b4c1ef1be864c9af157afd98fb3a
+timeCreated: 1450064187
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: bala
+    100002: barraEjectora
+    100004: cartucho.000
+    100006: cartucho.001
+    100008: cartucho.002
+    100010: cartucho.003
+    100012: cartucho.004
+    100014: cartucho.005
+    100016: cartucho.006
+    100018: Cilindro
+    100020: COMPUERTA
+    100022: Culata
+    100024: Culata.001
+    100026: //RootNode
+    100028: gatillo
+    100030: marco
+    100032: martillo
+    100034: Sun
+    400000: bala
+    400002: barraEjectora
+    400004: cartucho.000
+    400006: cartucho.001
+    400008: cartucho.002
+    400010: cartucho.003
+    400012: cartucho.004
+    400014: cartucho.005
+    400016: cartucho.006
+    400018: Cilindro
+    400020: COMPUERTA
+    400022: Culata
+    400024: Culata.001
+    400026: //RootNode
+    400028: gatillo
+    400030: marco
+    400032: martillo
+    400034: Sun
+    2300000: bala
+    2300002: barraEjectora
+    2300004: cartucho.000
+    2300006: cartucho.001
+    2300008: cartucho.002
+    2300010: cartucho.003
+    2300012: cartucho.004
+    2300014: cartucho.005
+    2300016: cartucho.006
+    2300018: Cilindro
+    2300020: COMPUERTA
+    2300022: Culata
+    2300024: Culata.001
+    2300026: gatillo
+    2300028: marco
+    2300030: martillo
+    3300000: bala
+    3300002: barraEjectora
+    3300004: cartucho.000
+    3300006: cartucho.001
+    3300008: cartucho.002
+    3300010: cartucho.003
+    3300012: cartucho.004
+    3300014: cartucho.005
+    3300016: cartucho.006
+    3300018: Cilindro
+    3300020: COMPUERTA
+    3300022: Culata
+    3300024: Culata.001
+    3300026: gatillo
+    3300028: marco
+    3300030: martillo
+    4300000: marco
+    4300002: barraEjectora
+    4300004: gatillo
+    4300006: martillo
+    4300008: COMPUERTA
+    4300010: Cilindro
+    4300012: cartucho.005
+    4300014: cartucho.004
+    4300016: cartucho.003
+    4300018: cartucho.002
+    4300020: cartucho.001
+    4300022: bala
+    4300024: cartucho.000
+    4300026: Culata.001
+    4300028: Culata
+    4300030: cartucho.006
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

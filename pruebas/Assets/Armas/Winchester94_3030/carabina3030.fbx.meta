@@ -1,0 +1,158 @@
+fileFormatVersion: 2
+guid: 5a99eb8638580ba4fb4588add49c7a4c
+timeCreated: 1450064458
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: barraextractoraCargadora
+    100002: canion
+    100004: //RootNode
+    100006: Cube
+    100008: Culata
+    100010: elevador
+    100012: empuniadura
+    100014: gatillo
+    100016: hojadelantera
+    100018: MARTILLO
+    100020: miratraserahoja
+    100022: palanca
+    100024: puente
+    100026: RANGO
+    100028: recibidor
+    100030: torinilllo
+    100032: tornillo2
+    100034: TUBOCARGADOR
+    400000: barraextractoraCargadora
+    400002: canion
+    400004: //RootNode
+    400006: Cube
+    400008: Culata
+    400010: elevador
+    400012: empuniadura
+    400014: gatillo
+    400016: hojadelantera
+    400018: MARTILLO
+    400020: miratraserahoja
+    400022: palanca
+    400024: puente
+    400026: RANGO
+    400028: recibidor
+    400030: torinilllo
+    400032: tornillo2
+    400034: TUBOCARGADOR
+    2300000: barraextractoraCargadora
+    2300002: canion
+    2300004: Cube
+    2300006: Culata
+    2300008: elevador
+    2300010: empuniadura
+    2300012: gatillo
+    2300014: hojadelantera
+    2300016: MARTILLO
+    2300018: miratraserahoja
+    2300020: palanca
+    2300022: puente
+    2300024: RANGO
+    2300026: recibidor
+    2300028: torinilllo
+    2300030: tornillo2
+    2300032: TUBOCARGADOR
+    3300000: barraextractoraCargadora
+    3300002: canion
+    3300004: Cube
+    3300006: Culata
+    3300008: elevador
+    3300010: empuniadura
+    3300012: gatillo
+    3300014: hojadelantera
+    3300016: MARTILLO
+    3300018: miratraserahoja
+    3300020: palanca
+    3300022: puente
+    3300024: RANGO
+    3300026: recibidor
+    3300028: torinilllo
+    3300030: tornillo2
+    3300032: TUBOCARGADOR
+    4300000: Culata
+    4300002: RANGO
+    4300004: miratraserahoja
+    4300006: hojadelantera
+    4300008: canion
+    4300010: barraextractoraCargadora
+    4300012: gatillo
+    4300014: recibidor
+    4300016: torinilllo
+    4300018: tornillo2
+    4300020: puente
+    4300022: MARTILLO
+    4300024: palanca
+    4300026: elevador
+    4300028: empuniadura
+    4300030: TUBOCARGADOR
+    4300032: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
