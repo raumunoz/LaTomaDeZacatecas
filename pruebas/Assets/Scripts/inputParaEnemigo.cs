@@ -21,12 +21,15 @@ public class inputParaEnemigo : MonoBehaviour {
 	Vector3 lookPos;
 	//Vector3 currentLookPosition;
 	//IK sTUff 
+	[SerializeField]public IK ik;
+	[System.Serializable] public class IK{
 	public Transform spine;
 	public float aimingZ = 213.46f;
 	public float aimingX = -65.93f;
 	public float aimingY = 20.1f;
 	public float point = 30;
-
+		public	bool debugAim;
+	}
 	public ParticleSystem particula;
 	void Start()
 	{
@@ -38,9 +41,13 @@ public class inputParaEnemigo : MonoBehaviour {
 		
 		character = GetComponent<movimientoEnemigo>();
 	}
+
 	void Update(){
-		aim = !Input.GetMouseButton(1);
-		if(aim && Input.GetMouseButton(0)){
+		if(ik.debugAim){
+			aim = Input.GetMouseButton (1);
+		}
+		aim = Input.GetMouseButton(1);
+		if(aim && Input.GetMouseButtonDown(0)){
 			anim.SetTrigger("disparar");
 			particula.Emit(1);
 		}
@@ -113,11 +120,11 @@ public class inputParaEnemigo : MonoBehaviour {
 		cam.transform.localPosition=pos;
 		if (aim) {
 			Vector3 eulerAngleOffset=Vector3.zero;
-			eulerAngleOffset=new Vector3(aimingX,aimingY,aimingZ);//
+			eulerAngleOffset=new Vector3(ik.aimingX,ik.aimingY,ik.aimingZ);//
 			Ray ray = new Ray(cam.position,cam.forward);
-			Vector3 lookPosition=ray.GetPoint(point);//mira 30 puntos adelante de la camara
-			spine.LookAt(lookPosition);
-			spine.Rotate(eulerAngleOffset,Space.Self);
+			Vector3 lookPosition=ray.GetPoint(ik.point);//mira 30 puntos adelante de la camara
+			ik.spine.LookAt(lookPosition);
+			ik.spine.Rotate(eulerAngleOffset,Space.Self);
 		}
 	}
 	void onAwake(){
