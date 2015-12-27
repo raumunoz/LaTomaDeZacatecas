@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8b0afc1a7c89cdc48a6a9a5087f5e530
-timeCreated: 1450926464
+timeCreated: 1451178598
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -152,7 +152,10 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'Spine2' is inbetween humanoid transforms and
+      has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 3
@@ -597,7 +600,7 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Beta(Clone)
+    - name: BetaNormal(Clone)
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -961,7 +964,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
     hasTranslationDoF: 0
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 3c26f519dbec5ac4b95032e417972a12,
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: cb9fc953d6bcdb945bae84590325812f,
     type: 3}
   animationType: 3
   humanoidOversampling: 1
