@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 467792}
   - 33: {fileID: 3364844}
   - 23: {fileID: 2365698}
+  - 64: {fileID: 6485878}
   m_Layer: 0
   m_Name: Cone
   m_TagString: Untagged
@@ -60,6 +61,7 @@ GameObject:
   - 4: {fileID: 424952}
   - 33: {fileID: 3324808}
   - 23: {fileID: 2359326}
+  - 64: {fileID: 6461180}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -210,6 +212,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135804}
   m_Mesh: {fileID: 4300000, guid: be07eee07fc254e4bbed54c892ed6a32, type: 3}
+--- !u!64 &6461180
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193738}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 4300002, guid: be07eee07fc254e4bbed54c892ed6a32, type: 3}
+--- !u!64 &6485878
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135804}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: be07eee07fc254e4bbed54c892ed6a32, type: 3}
 --- !u!95 &9560954
 Animator:
   serializedVersion: 3
@@ -249,7 +275,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 159064}

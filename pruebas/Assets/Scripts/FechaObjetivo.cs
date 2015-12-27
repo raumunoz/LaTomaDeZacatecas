@@ -12,21 +12,25 @@ public class FechaObjetivo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if ((!objetivo1) && (Mathf.Sqrt((transform.position.x-sierpe.transform.position.x)*(transform.position.x-sierpe.transform.position.x)+(transform.position.y-sierpe.transform.position.y)*(transform.position.y-sierpe.transform.position.y))<100)) {
-			objetivo1=true; 
+		Debug.Log (Application.loadedLevel);
+		if ((!objetivo1) && (Mathf.Sqrt((transform.position.x-sierpe.transform.position.x)*(transform.position.x-sierpe.transform.position.x)+(transform.position.y-sierpe.transform.position.y)*(transform.position.y-sierpe.transform.position.y))<160)) {
+			objetivo1=true;
+			Application.LoadLevel(9);
 		}
-		if ((!objetivo2) && (Mathf.Sqrt((transform.position.x-grillo.transform.position.x)*(transform.position.x-grillo.transform.position.x)+(transform.position.y-grillo.transform.position.y)*(transform.position.y-grillo.transform.position.y))<3)) {
+		if ((!objetivo2) && (Mathf.Sqrt((transform.position.x-grillo.transform.position.x)*(transform.position.x-grillo.transform.position.x)+(transform.position.y-grillo.transform.position.y)*(transform.position.y-grillo.transform.position.y))<160)) {
 			objetivo2=true; 
+			Application.LoadLevel(10);
 		}
 		if(objetivo2){
 			Destroy(this.gameObject);
 		}
 		if (!objetivo1) {
-			Debug.Log("sierpe: "+Mathf.Sqrt((transform.position.x-sierpe.transform.position.x)*(transform.position.x-sierpe.transform.position.x)+(transform.position.y-sierpe.transform.position.y)*(transform.position.y-sierpe.transform.position.y))); 
+			//Debug.Log("sierpe: "+Mathf.Sqrt((transform.position.x-sierpe.transform.position.x)*(transform.position.x-sierpe.transform.position.x)+(transform.position.y-sierpe.transform.position.y)*(transform.position.y-sierpe.transform.position.y))); 
 			this.gameObject.transform.LookAt (sierpe.transform);
+
 		} else {
 			if(!objetivo2){
-				Debug.Log("grillo: "+Mathf.Sqrt((transform.position.x-grillo.transform.position.x)*(transform.position.x-grillo.transform.position.x)+(transform.position.y-grillo.transform.position.y)*(transform.position.y-grillo.transform.position.y)));
+			//	Debug.Log("grillo: "+Mathf.Sqrt((transform.position.x-grillo.transform.position.x)*(transform.position.x-grillo.transform.position.x)+(transform.position.y-grillo.transform.position.y)*(transform.position.y-grillo.transform.position.y)));
 				this.gameObject.transform.LookAt (grillo.transform);
 			}else{
 				this.gameObject.transform.LookAt (bufa.transform);

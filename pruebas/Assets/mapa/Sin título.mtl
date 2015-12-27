@@ -1,0 +1,22 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Location_Snapshot
+Ka 0.000000 0.000000 0.000000
+Kd 0.541176 0.541176 0.525490
+Ks 0.330000 0.330000 0.330000
+map_Kd Sin título/Location_Snapshot.jpg
+
+newmtl Location_Snapshot_1
+Ka 0.000000 0.000000 0.000000
+Kd 0.521569 0.513725 0.486275
+Ks 0.330000 0.330000 0.330000
+map_Kd Sin título/Location_Snapshot_1.jpg
+
+newmtl Location_Snapshot_2
+Ka 0.000000 0.000000 0.000000
+Kd 0.600000 0.588235 0.596078
+Ks 0.330000 0.330000 0.330000
+map_Kd Sin título/Location_Snapshot_2.jpg
+

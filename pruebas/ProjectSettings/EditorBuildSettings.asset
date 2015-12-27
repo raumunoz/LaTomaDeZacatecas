@@ -4,4 +4,26 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Niveles/MenuPrincipal.unity
+  - enabled: 1
+    path: Assets/Niveles/inicio.unity
+  - enabled: 1
+    path: Assets/Niveles/MenuGalerias.unity
+  - enabled: 1
+    path: Assets/Niveles/galeriaPersonajes.unity
+  - enabled: 1
+    path: Assets/Niveles/galeriaEdificios.unity
+  - enabled: 1
+    path: Assets/Niveles/galeriaArmas.unity
+  - enabled: 1
+    path: Assets/Niveles/Opciones.unity
+  - enabled: 1
+    path: Assets/Niveles/GamePlay_1.unity
+  - enabled: 1
+    path: Assets/Niveles/GamePlay_2.unity
+  - enabled: 1
+    path: Assets/Niveles/GamePlay_3.unity
+  - enabled: 1
+    path: Assets/Niveles/GamePlay_4.unity
