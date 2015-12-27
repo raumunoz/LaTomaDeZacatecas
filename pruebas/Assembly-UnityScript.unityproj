@@ -110,6 +110,8 @@
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{DFBCA3C5-3FE2-571E-1C9C-3E5B863DA3ED}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{218BFE11-F2A0-44AB-ABB9-76A92B38F9A8}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
