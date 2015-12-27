@@ -12,6 +12,8 @@ public class inputParaEnemigo : MonoBehaviour {
 	private Vector3 move;
 	public bool aim;
 	public float aiminWaight;
+	managerDeArmasEnemigo weaponManager;
+	//customIK cusIK;
 
 	Animator anim;
 	//float autoTUrnTreshold=10;
@@ -30,7 +32,7 @@ public class inputParaEnemigo : MonoBehaviour {
 	public float point = 30;
 		public	bool debugAim;
 	}
-	public ParticleSystem particula;
+	//public ParticleSystem particula;
 	void Start()
 	{
 		anim = GetComponent<Animator> ();
@@ -40,17 +42,39 @@ public class inputParaEnemigo : MonoBehaviour {
 		}
 		
 		character = GetComponent<movimientoEnemigo>();
+		//cusIK = GetComponentInChildren<customIK>();
+		weaponManager = GetComponent<managerDeArmasEnemigo> ();
 	}
 
 	void Update(){
-		if(ik.debugAim){
-			aim = Input.GetMouseButton (1);
+		if(!ik.debugAim)
+		aim = Input.GetMouseButton (1);
+		
+		//aim = Input.GetMouseButton(1);
+		if(aim){
+			anim.SetTrigger ("apuntar");
 		}
-		aim = Input.GetMouseButton(1);
 		if(aim && Input.GetMouseButtonDown(0)){
+			if(weaponManager.activeWeapon.canBurts){
 			anim.SetTrigger("disparar");
-			particula.Emit(1);
+			weaponManager.FireActiveWrapon ();
+			//particula.Emit(1);	
+			}else{
+				if (Input.GetMouseButtonDown (0)) {
+					anim.SetTrigger("disparar");
+					weaponManager.FireActiveWrapon ();
+
+				}
+			}
 		}
+		//if(Input.GetAxis("Mouse ScrollWheel")!=0){
+		if(Input.GetKey(KeyCode.Q)){
+				weaponManager.changeWeapon (false);
+			}
+		if(Input.GetKey(KeyCode.E)){
+				weaponManager.changeWeapon (true);
+			}
+
 
 	}
 	void FixedUpdate()
@@ -127,9 +151,5 @@ public class inputParaEnemigo : MonoBehaviour {
 			ik.spine.Rotate(eulerAngleOffset,Space.Self);
 		}
 	}
-	void onAwake(){
-		
 
-
-	}
 }

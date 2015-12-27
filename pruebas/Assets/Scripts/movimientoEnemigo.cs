@@ -11,7 +11,7 @@ public class movimientoEnemigo : MonoBehaviour {
 	
 	Animator animator;
 
-
+	public Transform leftHand;
 	Vector3 moveInput; 
 	float turnAmount; 
 	float forwardAmount; 
@@ -29,7 +29,7 @@ public class movimientoEnemigo : MonoBehaviour {
 	void Start()
 	{
 		animator = GetComponentInChildren<Animator>();
-		
+		leftHand = animator.GetBoneTransform (HumanBodyBones.LeftHand);
 		SetUpAnimator();
 		
 		  
@@ -48,6 +48,7 @@ public class movimientoEnemigo : MonoBehaviour {
 				break; //si se encontro el primer animator deja de buscar
 			}
 		}
+
 	}
 	
 	void OnAnimatorMove()
@@ -101,10 +102,12 @@ public class movimientoEnemigo : MonoBehaviour {
 	
 	void UpdateAnimator()
 	{ 
+		if(!aim){
 		animator.applyRootMotion = true;
 		animator.SetFloat("avanzar", forwardAmount, 0.1f, Time.deltaTime);
 		animator.SetFloat("girar", turnAmount, 0.1f, Time.deltaTime);
 		animator.SetBool ("apuntar", aim);
+		}
 	}
 	
 	void GroundCheck()

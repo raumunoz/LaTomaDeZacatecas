@@ -5,7 +5,7 @@ public class customIK : MonoBehaviour {
 	//huesos
 	public Transform upperArm;
 	public Transform forearm;
-	public Transform hand;
+	 Transform hand;
 	//objetivos
 	public Transform target;
 	public Transform elbowTarget;
@@ -28,7 +28,15 @@ public class customIK : MonoBehaviour {
 	Vector3 lastTargetPosition;
 	Vector3 lastElbowArmPosition;
 
+	Animator anim;
+
 	void Start () {
+		anim = GetComponentInParent<Animator> ();
+		hand = GetComponentInParent<movimientoEnemigo> ().leftHand;
+		forearm = hand.parent;
+		upperArm = forearm.parent;
+
+
 		upperArmStartRotation = upperArm.rotation;
 		foreArmStartRotation = forearm.rotation;
 		handStartRottation = hand.rotation;
@@ -44,14 +52,21 @@ public class customIK : MonoBehaviour {
 		handAxisCorrection.transform.parent = foreArmAxisCorrection.transform;
 
 	}
+	/*void Update(){
+		if (anim.GetCurrentAnimatorStateInfo (1).IsTag ("apuntar")) {
+			isEneable = true;
+		} else {
+			isEneable = false;
+		}
+	}*/
 	
 	// Update is called once per frame
 	//para que la animacion se reproduca y al final del cuadro realizar los cambios
-	void LateUpdate () {
+	/*void LateUpdate () {
 		if(isEneable){
 			calculateIK();
 		}
-	}
+	}*/
 
 	void calculateIK(){
 		if(target==null){
@@ -113,8 +128,8 @@ public class customIK : MonoBehaviour {
 		upperArmAxisCorrection.transform.LookAt (forearm.position, upperArm.up);
 		upperArm.parent = upperArmAxisCorrection.transform;
 
-		foreArmAxisCorrection.transform.parent = forearm;
-		foreArmAxisCorrection.transform.LookAt (forearm.position, forearm.up);
+		foreArmAxisCorrection.transform.position = forearm.position;
+		foreArmAxisCorrection.transform.LookAt (hand.position, forearm.up);
 		forearm.parent = foreArmAxisCorrection.transform;
 
 		handAxisCorrection.transform.position = hand.position;
