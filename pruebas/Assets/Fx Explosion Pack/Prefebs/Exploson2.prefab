@@ -1259,7 +1259,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
-  lengthInSec: .25
+  lengthInSec: .819999993
   startDelay: 0
   speed: 1
   randomSeed: 0
@@ -2307,8 +2307,8 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
-  lengthInSec: 7.69999981
-  startDelay: 0
+  lengthInSec: 16.9500008
+  startDelay: 6
   speed: 1
   randomSeed: 0
   looping: 0
@@ -2318,7 +2318,7 @@ ParticleSystem:
   InitialModule:
     enabled: 1
     startLifetime:
-      scalar: 1.5
+      scalar: 28.1000004
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2475,10 +2475,10 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4294967295
+        rgba: 4280953563
       minMaxState: 0
     startSize:
-      scalar: 231.199997
+      scalar: 887.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2562,7 +2562,7 @@ ParticleSystem:
     randomDirection: 0
   EmissionModule:
     enabled: 1
-    m_Type: 0
+    m_Type: 1
     rate:
       scalar: 1000
       maxCurve:
@@ -3477,11 +3477,27 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: lengthInSec
-      value: 7.69999981
+      value: .819999993
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: InitialModule.startSize.scalar
-      value: 231.199997
+      value: 887.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 28.1000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: EmissionModule.m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: startDelay
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startColor.maxColor.rgba
+      value: 4280953563
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

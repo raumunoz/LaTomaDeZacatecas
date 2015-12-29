@@ -98,6 +98,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 82: {fileID: 8257276}
   - 114: {fileID: 11486298}
+  - 114: {fileID: 11443878}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -311,7 +312,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ac25ceaaca1306341a6f32fde642219d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3d2e074e8767138429096c255678d6d7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -439,6 +440,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b974e65c0ec4e34590499b9fadc1eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11443878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f1a286bfc76c664c882efaf9b51c528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wepon: {fileID: 0}
 --- !u!114 &11486298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9829,7 +9842,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: ac25ceaaca1306341a6f32fde642219d, type: 3}
+      objectReference: {fileID: 8300000, guid: 3d2e074e8767138429096c255678d6d7, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100010}

@@ -4,8 +4,11 @@ using System.Collections;
 public class FechaObjetivo : MonoBehaviour {
 	public GameObject sierpe, grillo, bufa, palacio, explocion;
 	private bool objetivo1, objetivo2;
+	private float ex;
+	private bool ex1;
 	// Use this for initialization
 	void Start () {
+		ex1 = true;
 		objetivo1 = false;
 		objetivo2 = false;
 	}
@@ -20,10 +23,11 @@ public class FechaObjetivo : MonoBehaviour {
 		if ((!objetivo2) && (Mathf.Sqrt((transform.position.x-grillo.transform.position.x)*(transform.position.x-grillo.transform.position.x)+(transform.position.y-grillo.transform.position.y)*(transform.position.y-grillo.transform.position.y))<160)) {
 			objetivo2=true; 
 			Application.LoadLevel(10);
+			ex=Time.time;
 		}
-		if(objetivo2){
+		/*if(objetivo2){
 			Destroy(this.gameObject);
-		}
+		}*/
 		if (!objetivo1) {
 			//Debug.Log("sierpe: "+Mathf.Sqrt((transform.position.x-sierpe.transform.position.x)*(transform.position.x-sierpe.transform.position.x)+(transform.position.y-sierpe.transform.position.y)*(transform.position.y-sierpe.transform.position.y))); 
 			this.gameObject.transform.LookAt (sierpe.transform);
@@ -34,8 +38,15 @@ public class FechaObjetivo : MonoBehaviour {
 				this.gameObject.transform.LookAt (grillo.transform);
 			}else{
 				this.gameObject.transform.LookAt (bufa.transform);
-				Instantiate(explocion,palacio.transform.position,palacio.transform.rotation);
-				Destroy(palacio);
+				Debug.Log(Time.time-ex);
+				if((Time.time-ex>30)&&ex1){
+					Destroy(palacio);
+					Instantiate(explocion,palacio.transform.position,palacio.transform.rotation);
+					ex1=false;
+				}
+				if(Time.time-ex>40){
+					//carga video final
+				}
 			}
 		}
 	}

@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2361150}
   - 54: {fileID: 5486192}
   - 114: {fileID: 11462394}
+  - 114: {fileID: 11485046}
   m_Layer: 0
   m_Name: balaCanon
   m_TagString: Untagged
@@ -94,6 +95,18 @@ MonoBehaviour:
   nTime: 10
   Aceleracion: 1
   DisparoChoque: {fileID: 400010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+--- !u!114 &11485046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f1a286bfc76c664c882efaf9b51c528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wepon: {fileID: 483254}
 --- !u!135 &13591968
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -117,6 +130,10 @@ Prefab:
       propertyPath: DisparoChoque
       value: 
       objectReference: {fileID: 400010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+    - target: {fileID: 0}
+      propertyPath: wepon
+      value: 
+      objectReference: {fileID: 483254}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 180388}
