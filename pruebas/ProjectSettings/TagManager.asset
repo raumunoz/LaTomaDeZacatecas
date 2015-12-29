@@ -12,6 +12,7 @@ TagManager:
   - canionColt
   - managerMIra
   - objetivo
+  - canionWinchester
   layers:
   - Default
   - TransparentFX

@@ -48,6 +48,7 @@ public class controlDeArmasEnemigo : MonoBehaviour {
 		bulletPart = bulletSpawnGD.GetComponent<ParticleSystem> ();
 		audioSource = GetComponent<AudioSource> ();
 		weponAnim = GetComponent<Animator> ();
+		//weponAnim.SetInteger("cartuchio"
 		scale = transform.localScale;
 		/*if(resPosicion.waist){
 			hasOwner=true

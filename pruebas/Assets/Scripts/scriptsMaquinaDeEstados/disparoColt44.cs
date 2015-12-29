@@ -12,6 +12,7 @@ public class disparoColt44 : StateMachineBehaviour {
 	public GameObject esfera;
 	private GameObject cartucho;
 	private SkinnedMeshRenderer m;
+	 controlDeArmasJugador controlArma;
 //	private camaraMira funcionesDeCamara;
 //	private AnotherScript anotherScript;
 	//private GameObject otherScript;
@@ -20,24 +21,26 @@ public class disparoColt44 : StateMachineBehaviour {
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		//funcionesDeCamara = Camera.main.transform.root.GetComponent<camaraMira>();
+		controlArma=GameObject.Find ("/JugadorFps/FirstPersonCharacter/armas/animacionColt44-40").GetComponent<controlDeArmasJugador> ();
 		cartucho = GameObject.Find ("/JugadorFps/FirstPersonCharacter/armas/animacionColt44-40/cartucho_006");
+		disparo = GameObject.Find ("armas").GetComponent<disparosDelJugador> ();
 		anim = GameObject.Find ("animacionColt44-40").GetComponent<Animator> ();
 		m =cartucho.GetComponent<SkinnedMeshRenderer>();
-		m.enabled = false;
 		objetin = GameObject.FindGameObjectsWithTag ("canionColt");
+		m.enabled = false;
+	
 		posicionHueso = objetin [0].transform;
 		//Instantiate(flash,);
 		casquillos = animator.GetInteger ("casquillos");
 
 		//GameObject Object1 = GameObject.Find ("armas");
 		//Component anotherScript = Object1.GetComponent<disparosDelJugador> ();
-		disparo = GameObject.Find ("armas").GetComponent<disparosDelJugador> ();
+
 		disparo.disparo (3);
+		controlArma.disparar ();
 
 
 
-
-		anim.SetInteger ("cartuchos",anim.GetInteger("cartuchos")-1);
 		//Transform bone = GetComponent<Animator>().avatar.GetBone(BoneType.LeftShoulder);
 
 
@@ -63,6 +66,8 @@ public class disparoColt44 : StateMachineBehaviour {
 	//OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		animator.SetInteger ("casquillos",casquillos+1);
+		anim.SetInteger ("cartuchos",controlArma.municionActual);
+		controlArma.muestraMunicion ();
 		m.enabled = true;
 	}
 
