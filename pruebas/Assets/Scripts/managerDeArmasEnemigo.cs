@@ -12,7 +12,9 @@ using System.Collections.Generic;
 
 	public bool DebugIk;
 }
+
 public class managerDeArmasEnemigo : MonoBehaviour {
+	public GameObject BulletPrefab;
 	public List<GameObject>WeaponList=new List<GameObject>();
 	public controlDeArmasEnemigo activeWeapon;
 	int weaponNumber;
@@ -29,7 +31,7 @@ public class managerDeArmasEnemigo : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		int weaponNumber=0;
+		weaponNumber=0;
 		foreach (GameObject go in WeaponList) {
 			go.GetComponent<controlDeArmasEnemigo> ().hasOwner = true;
 

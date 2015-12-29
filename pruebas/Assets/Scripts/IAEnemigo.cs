@@ -11,7 +11,7 @@ public class IAEnemigo : MonoBehaviour {
 	public GameObject wayPointHolder;
 	public List<Transform> wayPoints = new List<Transform> ();
 	float targetToleracian=1;
-
+	managerDeArmasEnemigo weponManger;
 	Vector3 targetPos;
 	Animator anim;
 
@@ -31,6 +31,7 @@ public class IAEnemigo : MonoBehaviour {
 	public AIstate aiState;
 
 	void Start () {
+		weponManger=GetComponent<managerDeArmasEnemigo> ();
 		agent = GetComponentInChildren<NavMeshAgent> ();
 		charMove = GetComponent<movimientoEnemigo> ();
 		anim = GetComponent<Animator> ();
@@ -150,21 +151,21 @@ public class IAEnemigo : MonoBehaviour {
 			anim.SetLookAtWeight (1, 0.8f, 1, 1, 1);
 			anim.SetLookAtPosition (enemyToAtack.transform.position);
 		} else {
-			anim.SetLookAtWeight(0);
+			anim.SetLayerWeight (0, 0);
 		}
 	}
 	void shootRay(){
 		Debug.Log("ENIMGO:Disparo");
-		/*
+
 		RaycastHit hit;
 		GameObject go = Instantiate (weponManger.BulletPrefab, transform.position, Quaternion.identity)as GameObject;
 		LineRenderer line = go.GetComponent<LineRenderer> ();
-		Vector3 startPos = weponManger.Activewepon.bulletSpawn;
+		Vector3 startPos = weponManger.activeWeapon.bulletSpawn.TransformPoint(Vector3.zero);
 		Vector3 EndPos = Vector3.zero;
-		int mask=~(1<<9);
+		int mask=~(1<<9);//layers
 		Vector3 directionToAttack = enemyToAtack.transform.position - transform.position;
 		if(Physics.Raycast(startPos,directionToAttack,out hit,Mathf.Infinity,mask)){
-			float distance=Vector3.Distance(weponManager.Active.bulletSpawn.transform.position,hit.point);
+			float distance=Vector3.Distance(weponManger.activeWeapon.bulletSpawn.transform.position,hit.point);
 			RaycastHit[]hits=Physics.RaycastAll(startPos,hit.point-startPos,distance);
 
 			foreach(RaycastHit hit2 in hits){
@@ -174,17 +175,18 @@ public class IAEnemigo : MonoBehaviour {
 					hit2.transform.GetComponent<Rigidbody>().AddForce(direction*200);
 
 				}
-				else if(hit2.transform.transform.GetComponent<Destructible>()){
+				//si es destructible
+				/*else if(hit2.transform.transform.GetComponent<Destructible>()){
 					hit2.transform.GetComponent<Destructible>().destruct=true;
-				}
-				else if(hit2.transform.transform.GetComponent<statsDePersonajes>()){
+				}*/
+				/*else if(hit2.transform.transform.GetComponent<statsDePersonajes>()){
 
-				}
+				}*/
 			}
 			EndPos=hit.point;
 		}
 		line.SetPosition (0, startPos);
 		line.SetPosition (1, EndPos);
-		*/
+
 	}
 }
