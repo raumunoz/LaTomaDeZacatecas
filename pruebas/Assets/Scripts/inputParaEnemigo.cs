@@ -5,7 +5,7 @@ public class inputParaEnemigo : MonoBehaviour {
 
 	public bool walkByDefault = false;
 
-
+	public Transform espina;
 	private movimientoEnemigo character;
 	private Transform cam;
 	private Vector3 camForward;
@@ -14,7 +14,7 @@ public class inputParaEnemigo : MonoBehaviour {
 	public float aiminWaight;
 	managerDeArmasEnemigo weaponManager;
 	//customIK cusIK;
-
+	public GameObject bulletPrefab;
 	Animator anim;
 	//float autoTUrnTreshold=10;
 	//float autoTurnSpeed=20;
@@ -53,10 +53,12 @@ public class inputParaEnemigo : MonoBehaviour {
 		//aim = Input.GetMouseButton(1);
 		if(aim){
 			anim.SetTrigger ("apuntar");
+			//ShotRay ();
 		}
 		if(aim && Input.GetMouseButtonDown(0)){
-			if(weaponManager.activeWeapon.canBurts){
+			if(weaponManager.activeWeapon.canBurts){//problema
 			anim.SetTrigger("disparar");
+			ShotRay ();
 			weaponManager.FireActiveWrapon ();
 			//particula.Emit(1);	
 			}else{
@@ -77,6 +79,7 @@ public class inputParaEnemigo : MonoBehaviour {
 
 
 	}
+
 	void FixedUpdate()
 	{
 
@@ -133,6 +136,38 @@ public class inputParaEnemigo : MonoBehaviour {
 	lookPos = (lookIncameraDirection && cam != null) ? transform.position + cam.forward * 100 : transform.position + transform.forward * 100;
 	move *= walkMultiplier;
 	character.Move(move,aim,lookPos);
+	}
+		
+	void ShotRay(){
+		float x = Screen.width / 2;
+		float y = Screen.height / 2;
+		Ray ray = Camera.main.ScreenPointToRay (new Vector3 (x, y, 0));
+		RaycastHit hit;
+		GameObject go = Instantiate (bulletPrefab, transform.position, Quaternion.identity)as GameObject;
+		LineRenderer line = go.GetComponent<LineRenderer> ();
+		Vector3 starPos = weaponManager.activeWeapon.bulletSpawn.TransformPoint (Vector3.zero);
+		Vector2 endPos = Vector3.zero;
+		if (Physics.Raycast (ray, out hit, Mathf.Infinity)) {
+			float distance = Vector3.Distance (weaponManager.activeWeapon.bulletSpawn.transform.position, hit.point);
+			RaycastHit[] hits = Physics.RaycastAll (starPos, hit.point - starPos, distance);
+			foreach (RaycastHit hit2 in hits) {
+				if (hit2.transform.GetComponent<Rigidbody> ()) {
+					Vector3 direction = hit2.transform.position - transform.position;
+					direction = direction.normalized;
+					hit2.transform.GetComponent<Rigidbody> ().AddForce (direction * 200);
+				} /*else {
+					
+				}*/
+
+
+			}
+			endPos = hit.point;
+
+		} else {
+			endPos = ray.GetPoint (100);
+		}
+		line.SetPosition (0, starPos);
+		line.SetPosition (1, endPos);
 	}
 
 	void LateUpdate(){

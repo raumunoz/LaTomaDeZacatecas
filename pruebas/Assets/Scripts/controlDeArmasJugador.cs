@@ -9,7 +9,7 @@ public class controlDeArmasJugador : MonoBehaviour {
 	public bool tineDuenio;
 	public bool disparo;
 	public float danio;
-	public managerDeArmasEnemigo.WeaponType wepoType;
+	public managerDeArmasjugador.WeaponType wepoType;
 	private disparosDelJugador dispParoDelJugador;
 	public Text municion;
 	Animator anim;
@@ -42,9 +42,11 @@ public class controlDeArmasJugador : MonoBehaviour {
 
 		//Debug.Log ("DISPARARASDASDASFASFasf");
 	}
+
 	public void dismiNuirParque(){
 		municionReservas--;
 	}
+
 	public void muestraMunicion(){
 		municion.text =(municionActual + "/" + municionReservas);
 	}

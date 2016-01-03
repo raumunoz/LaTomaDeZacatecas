@@ -66,7 +66,7 @@ public class controlDeArmasEnemigo : MonoBehaviour {
 			if (curAmmo > 0) {
 				
 					curAmmo--;
-					bulletPart.Emit (1);
+//					bulletPart.Emit (1);
 					audioSource.Play ();
 					//	weponAnim.SetTrigger("disparo");
 					fireBullet = false;
@@ -79,7 +79,7 @@ public class controlDeArmasEnemigo : MonoBehaviour {
 					} else {
 						curAmmo = MaxClipAmmo - (MaxClipAmmo - MaxAmmo);
 					}
-					Debug.Log ("Recarga");
+
 						
 				}
 			} else {

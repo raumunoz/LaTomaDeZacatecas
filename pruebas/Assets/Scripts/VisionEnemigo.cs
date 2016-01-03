@@ -9,13 +9,16 @@ public class VisionEnemigo : MonoBehaviour {
 	void Start () {
 		//charStat = GetComponentInParent<statsDePerosnaje> ();
 		enAi = GetComponentInParent<IAEnemigo>();
+		charStat=GetComponentInParent<statsDePersonajes>();
 	}
 	void OnTriggerEnter(Collider other){
-		Debug.Log("contactooooooooooooooooooooooo");
+		//Debug.Log("contactooooooooooooooooooooooo");
 		if(other.GetComponent<statsDePersonajes>()){
-
+			//Debug.Log("Personaje");
 			if(other.GetComponent<statsDePersonajes>().Id != charStat.Id){
-				if(enAi.Enemies.Contains(other.gameObject)){
+				
+				if(!enAi.Enemies.Contains(other.gameObject)){
+					//Debug.Log("Personaje");
 					enAi.Enemies.Add(other.gameObject);//agrega ala lista de enemigos
 				}
 			}
