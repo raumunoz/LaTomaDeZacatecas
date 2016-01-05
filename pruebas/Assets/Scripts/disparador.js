@@ -12,7 +12,7 @@ function Start () {
 }
 
 function Update () {
-	Debug.Log(Time.time-tiempo+"    "+tiempoEspera);
+	//Debug.Log(Time.time-tiempo+"    "+tiempoEspera);
 	speed=Random.Range(100,200);
 	if(Time.time-tiempo>tiempoEspera){
 		var instantiatedProjectile : Rigidbody = Instantiate(projectile, transform.position, transform.rotation );

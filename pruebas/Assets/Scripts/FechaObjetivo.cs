@@ -40,6 +40,7 @@ public class FechaObjetivo : MonoBehaviour {
 				this.gameObject.transform.LookAt (bufa.transform);
 				Debug.Log(Time.time-ex);
 				if((Time.time-ex>30)&&ex1){
+					Debug.Log("ex1");
 					Destroy(palacio);
 					Instantiate(explocion,palacio.transform.position,palacio.transform.rotation);
 					ex1=false;
