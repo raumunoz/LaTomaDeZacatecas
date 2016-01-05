@@ -27,3 +27,7 @@ EditorBuildSettings:
     path: Assets/Niveles/GamePlay_3.unity
   - enabled: 1
     path: Assets/Niveles/GamePlay_4.unity
+  - enabled: 1
+    path: Assets/Niveles/intermedio.unity
+  - enabled: 1
+    path: Assets/Niveles/final.unity

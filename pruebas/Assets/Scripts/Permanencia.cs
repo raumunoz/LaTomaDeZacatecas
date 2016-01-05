@@ -10,7 +10,7 @@ public class Permanencia : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Application.loadedLevel == 0) {
+		if ((Application.loadedLevel == 0)||(Application.loadedLevel == 12)||(Application.loadedLevel == 11)) {
 			Destroy(this.gameObject);
 		}
 	}

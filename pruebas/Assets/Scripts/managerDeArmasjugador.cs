@@ -7,14 +7,15 @@ public class managerDeArmasjugador : MonoBehaviour {
 	public List<GameObject>listaDeArmas=new List<GameObject>();
 	public controlDeArmasJugador armaActiva;
 	Animator anim;
+
 	//public Canvas texto;
 	 //GUIText balas;
 
-	public enum tipoDeArma
+	public enum WeaponType
 	{
-		coltPacemaker,carabina3030
+		Pistol,Rifle
 	}
-	public tipoDeArma weaponType;
+	public WeaponType weaponTypes;
 	// Use this for initialization
 	void Start () {
 		
@@ -22,10 +23,14 @@ public class managerDeArmasjugador : MonoBehaviour {
 
 		foreach (GameObject go in listaDeArmas) {
 			go.GetComponent<controlDeArmasJugador> ().tineDuenio= true;
-			Debug.Log ("ARMA" + go.GetComponent<controlDeArmasJugador> ().wepoType);
-
+			//Debug.Log ("ARMA" + go.GetComponent<controlDeArmasJugador> ().wepoType);
+			if(go.activeSelf){
+				armaActiva = go.GetComponent<controlDeArmasJugador> ();
+			}
 		}
-		armaActiva = listaDeArmas [0].GetComponent<controlDeArmasJugador> ();
+
+		//armaActiva = listaDeArmas [1].GetComponent<controlDeArmasJugador> ();
+		weaponTypes = armaActiva.wepoType;
 //		weaponType = armaActiva.wepoType;
 
 	}
@@ -61,6 +66,7 @@ public class managerDeArmasjugador : MonoBehaviour {
 		//weaponType = armaActiva.wepoType;
 		armaActiva.equipado = true;
 		armaActiva.muestraMunicion ();
+		weaponTypes = armaActiva.wepoType;
 	}
 
 }

@@ -16,11 +16,11 @@ public class FechaObjetivo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Debug.Log (Application.loadedLevel);
-		if ((!objetivo1) && (Mathf.Sqrt((transform.position.x-sierpe.transform.position.x)*(transform.position.x-sierpe.transform.position.x)+(transform.position.y-sierpe.transform.position.y)*(transform.position.y-sierpe.transform.position.y))<160)) {
+		if ((!objetivo1) && (Mathf.Sqrt((transform.position.x-sierpe.transform.position.x)*(transform.position.x-sierpe.transform.position.x)+(transform.position.z-sierpe.transform.position.z)*(transform.position.z-sierpe.transform.position.z))<160)) {
 			objetivo1=true;
 			Application.LoadLevel(9);
 		}
-		if ((!objetivo2) && (Mathf.Sqrt((transform.position.x-grillo.transform.position.x)*(transform.position.x-grillo.transform.position.x)+(transform.position.y-grillo.transform.position.y)*(transform.position.y-grillo.transform.position.y))<160)) {
+		if ((!objetivo2) && (Mathf.Sqrt((transform.position.x-grillo.transform.position.x)*(transform.position.x-grillo.transform.position.x)+(transform.position.z-grillo.transform.position.z)*(transform.position.z-grillo.transform.position.z))<90)) {
 			objetivo2=true; 
 			Application.LoadLevel(10);
 			ex=Time.time;
@@ -46,6 +46,7 @@ public class FechaObjetivo : MonoBehaviour {
 				}
 				if(Time.time-ex>40){
 					//carga video final
+					Application.LoadLevel(12);
 				}
 			}
 		}

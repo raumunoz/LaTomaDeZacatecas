@@ -21,7 +21,7 @@ public class managerDeArmasEnemigo : MonoBehaviour {
 
 	public enum WeaponType
 	{
-		pistol,rifle
+		Pistol,Rifle
 	}
 	public WeaponType weaponType;
 	//customIK customiK;
@@ -54,6 +54,7 @@ public class managerDeArmasEnemigo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+	//	activeWeapon = WeaponList [weaponNumber].GetComponent<controlDeArmasEnemigo> ();
 		activeWeapon = WeaponList [weaponNumber].GetComponent<controlDeArmasEnemigo> ();
 		IKtargetPo.handPlacement = activeWeapon.handPosition.transform;
 		activeWeapon.equip = false;
@@ -62,11 +63,11 @@ public class managerDeArmasEnemigo : MonoBehaviour {
 		weaponType = activeWeapon.wepoType;
 		if(!IKtargetPo.DebugIk){
 			switch (weaponType) {
-			case WeaponType.pistol:
+			case WeaponType.Pistol:
 				anim.SetInteger ("arma", 0);
 				IKtargetPo.elbowPlacement.localPosition = IKtargetPo.elbowPistolpos;
 				break;
-			case WeaponType.rifle:
+			case WeaponType.Rifle:
 				anim.SetInteger ("arma", 1);
 				IKtargetPo.elbowPlacement.localPosition = IKtargetPo.elbowRiflepos;
 				break;
@@ -80,8 +81,10 @@ public class managerDeArmasEnemigo : MonoBehaviour {
 
 		}
 	}
-	public void changeWeapon(bool ascendig){
-		/*	if (WeaponList.Count > 1) {
+	public void changeWeapon (bool ascendig)
+	{
+		/*weaponNumber = 1;
+		if (WeaponList.Count > 1) {
 			activeWeapon.equip = false;
 			if (ascendig) {
 				if (weaponNumber < WeaponList.Count - 1) {
@@ -94,15 +97,18 @@ public class managerDeArmasEnemigo : MonoBehaviour {
 					weaponNumber = WeaponList.Count - 1;
 				}
 			}
-		}
-	}*/
-		if (WeaponList.Count > 1) {
-			activeWeapon.equip = true;
-			if (ascendig) {
-				weaponNumber = 0;
-			} else {
-				weaponNumber = 1;
-			}
+		}*/
+		activeWeapon.equip = true;
+		if (ascendig) {
+			weaponNumber = 0;
+		
+		} if(!ascendig) {
+			weaponNumber = 1;
+
 		}
 	}
+
+			
+
+
 }

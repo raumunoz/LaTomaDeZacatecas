@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 793df34157a290d468a5519e99d3f013
-timeCreated: 1451178588
+timeCreated: 1451516817
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -153,9 +153,8 @@ ModelImporter:
     motionNodeName: 
     animationImportErrors: 
     animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
-      improve retargeting quality.\n\t'Spine2' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n"
+      might lower retargeting quality:\n\t'Spine2' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 3
@@ -600,7 +599,7 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: BetaNormal(Clone)
+    - name: Beta(Clone)
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -803,12 +802,12 @@ ModelImporter:
     - name: RightHandThumb2
       position: {x: 0.032638, y: -0.010869999, z: 0.029669}
       rotation: {x: -0.028153155, y: -0.09899125, z: -0.005297373, w: 0.9946759}
-      scale: {x: 1, y: 1, z: 1.0000001}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1.0000001}
       transformModified: 1
     - name: RightHandThumb3
       position: {x: 0.044165, y: -0.013703, z: 0.02135}
       rotation: {x: -0.005992508, y: -0.008890197, z: 0.0066902814, w: 0.9999201}
-      scale: {x: 1.0000001, y: 1, z: 0.9999999}
+      scale: {x: 1, y: 1.0000001, z: 0.9999998}
       transformModified: 1
     - name: RightHandThumb4
       position: {x: 0.025999999, y: -0.01, z: 0.01}
@@ -918,17 +917,17 @@ ModelImporter:
     - name: LeftHandThumb1
       position: {x: -0.023784999, y: -0.010029, z: 0.026208999}
       rotation: {x: -0.043441124, y: 0.028133582, z: -0.041499764, w: 0.99779713}
-      scale: {x: 0.9999999, y: 1.0000001, z: 1}
+      scale: {x: 1, y: 1.0000001, z: 1}
       transformModified: 1
     - name: LeftHandThumb2
       position: {x: -0.033624, y: -0.010029, z: 0.028397998}
       rotation: {x: -0.024529902, y: 0.08199052, z: -0.000088137946, w: 0.9963312}
-      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+      scale: {x: 1, y: 1.0000001, z: 0.99999994}
       transformModified: 1
     - name: LeftHandThumb3
       position: {x: -0.045018, y: -0.013444999, z: 0.021782998}
       rotation: {x: -0.007812734, y: 0.010885829, z: -0.009427229, w: 0.9998658}
-      scale: {x: 1, y: 0.9999999, z: 1}
+      scale: {x: 1, y: 0.9999997, z: 1}
       transformModified: 1
     - name: LeftHandThumb4
       position: {x: -0.025999999, y: -0.01, z: 0.01}
@@ -963,8 +962,8 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    hasTranslationDoF: 0
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: cb9fc953d6bcdb945bae84590325812f,
+    hasTranslationDoF: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 3c26f519dbec5ac4b95032e417972a12,
     type: 3}
   animationType: 3
   humanoidOversampling: 1

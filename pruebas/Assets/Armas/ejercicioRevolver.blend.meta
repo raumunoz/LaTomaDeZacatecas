@@ -30,6 +30,7 @@ ModelImporter:
     100044: martillo_001
     100046: martillo_002
     100048: MuzleFlashColtEnemigo_001
+    100050: muzleFlashColtEnemigo
     400000: bala
     400002: bala_001
     400004: cartucho_000
@@ -55,6 +56,7 @@ ModelImporter:
     400044: martillo_001
     400046: martillo_002
     400048: MuzleFlashColtEnemigo_001
+    400050: muzleFlashColtEnemigo
     2300000: bala
     2300002: bala_001
     2300004: cartucho_000
