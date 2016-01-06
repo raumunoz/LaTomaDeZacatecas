@@ -14,7 +14,7 @@ public class IAEnemigo : MonoBehaviour {
 	static managerDeArmasEnemigo weponManger;
 	Vector3 targetPos;
 	Animator anim;
-
+	bool InSIght=true;
 	float patrolTImer;
 	public float waitingTime=4;
 	public float atackRate=4;
@@ -24,14 +24,21 @@ public class IAEnemigo : MonoBehaviour {
 	public List<GameObject>Enemies=new List<GameObject>();
 	public GameObject enemyToAtack;
 	public List<Transform>avaliableCover=new List<Transform>();
-
-
+	bool takingCOver;
+	bool attacking;
+	public int timesFired;
+	bool decision;
+	Vector3 lastKnowPosition;
+	objetodeCovertura objMc;
 	// Update is called once per framez
 	void Update () {
 
-
+		if (enemyToAtack) {
+			LookForEnemy ();
+		}
+			
 		DecideState ();
-		FindCoves();
+	//	FindCoves();
 		switch (aiState) {
 		case AIstate.Atack:
 		//	anim.SetLookAtPosition (enemyToAtack.transform.position);
@@ -40,9 +47,12 @@ public class IAEnemigo : MonoBehaviour {
 		case AIstate.patrol:
 			Patrolling();
 			break;
-		case AIstate.Cover:
-			agent.speed = 7;
+		case AIstate.GoToCover:
+			agent.speed = 6;
 			takeCover ();
+			break;
+		case AIstate.InCover:
+			inCOver ();
 			break;
 		}
 
@@ -50,16 +60,18 @@ public class IAEnemigo : MonoBehaviour {
 
 	// Use this for initialization
 	public enum AIstate {
-		patrol,Atack,Cover
+		patrol,Atack,GoToCover,InCover
 	}
 
 	public AIstate aiState;
 
 	void Start () {
+		decision = false;
 		weponManger=GetComponent<managerDeArmasEnemigo> ();
-		agent = GetComponent<NavMeshAgent> ();
+		agent = GetComponentInChildren<NavMeshAgent> ();
 		charMove = GetComponent<movimientoEnemigo> ();
 		anim = GetComponent<Animator> ();
+//		enemyToAtack=false;
 		Transform[] wayp = wayPointHolder.GetComponentsInChildren<Transform> ();
 		foreach(Transform tr in wayp){
 			if (tr != wayPointHolder.transform){
@@ -77,15 +89,31 @@ public class IAEnemigo : MonoBehaviour {
 				foreach (GameObject enGo in Enemies) {
 					Vector3 direction = enGo.transform.position - transform.position;//direcion del personaje enemigo
 					float angle = Vector3.Angle (direction, transform.forward);//encontrar el angula hacia el enemigo
-					if (angle < 110f * 0.5f) {//angulo al que debe estar el enmigo
+					//Debug.Log("anguiloooooooooooooo"+ angle);
+					if (angle < 110f * 0.5f ) {//angulo al que debe estar el enmigo
+							Debug.Log("en Angulo de vision");
+
 						RaycastHit hit;
-						if (Physics.Raycast (transform.position + transform.up, direction.normalized, out hit, 15)) {//quinze es el radio de la mira
-							if (hit.collider.GetComponent<statsDePersonajes> ()) {
+						if (Physics.Raycast (transform.position + transform.up, direction.normalized, out hit, 20)) {//20 es el radio de la mira
+							Debug.Log("dentro de la vision ");
+
+							if (hit.collider.GetComponent<statsDePersonajes> ()) {//no funciona esta linea
+								Debug.Log(" enemigo");
 								if (hit.collider.GetComponent<statsDePersonajes> ().Id != GetComponent<statsDePersonajes> ().Id) {
 									Debug.Log ("!!!!!!!!!!!!!!!");
 									enemyToAtack = hit.collider.gameObject;
 								}
 							}
+
+							/*if (hit.collider.GetComponentInParent<statsDePersonajes> ()) {//no funciona esta linea
+								Debug.Log("tealvez enemigo juagador");
+								Debug.Log("id de jugador  "+ hit.collider.GetComponentInParent<statsDePersonajes> ().Id );
+								if (hit.collider.GetComponentInParent<statsDePersonajes> ().Id != GetComponent<statsDePersonajes> ().Id) {//no entra
+									Debug.Log ("!!!!!!!!!!!!!!!");
+									enemyToAtack = hit.collider.gameObject;
+								}
+							}*/
+						
 						}
 					}
 				}
@@ -93,24 +121,48 @@ public class IAEnemigo : MonoBehaviour {
 			else{//si ya hay un enemigo
 				//no hemos decidido todavia
 				if(!decision){
+					Debug.Log("Hacer decicion");
 					//compare las aramas
-					if(compararArma(weponManger.activeWeapon,enemyToAtack.GetComponentInChildren<managerDeArmasjugador>().armaActiva )){
+					//if(compararArma(weponManger.activeWeapon,enemyToAtack.GetComponentInChildren<managerDeArmasjugador>().armaActiva )){
+					if(enemyToAtack.GetComponent<managerDeArmasEnemigo>()){
+					if(compararArma(weponManger.activeWeapon,enemyToAtack.GetComponent<managerDeArmasEnemigo>().activeWeapon)){
 						//el arma del enemico es superior
-						aiState=AIstate.Atack;
+						//aiState=AIstate.Atack;
+						aiState=AIstate.GoToCover;
 					}else{
 						//el arma enemiga es inferior tomames covertuira
-						aiState=AIstate.Cover;		
+						aiState=AIstate.GoToCover;		
 					}
 				
 				
 				decision=true;//solo una vez se toma esta decision
 				}
+
+					if(enemyToAtack.GetComponentInChildren<managerDeArmasjugador>()){
+						
+						if(compararArma(weponManger.activeWeapon,enemyToAtack.GetComponentInChildren<managerDeArmasjugador>().armaActiva)){
+							//el arma del enemico es superior
+							//aiState=AIstate.Atack;
+							Debug.Log("Ve a cobertura");
+							aiState=AIstate.GoToCover;
+						}else{
+							//el arma enemiga es inferior tomames covertuira
+							aiState=AIstate.GoToCover;		
+						}
+
+
+						decision=true;//solo una vez se toma esta decision
+					}
+				
+				}
+				
 			}
 		}
 		#endregion
 
 		#region estamos en covertura?
-		if (aiState == AIstate.Cover) {
+
+		if (aiState == AIstate.GoToCover) {
 			if(closestCover!=null){
 
 				float distance=Vector3.Distance(transform.position,closestCover.transform.position);
@@ -118,7 +170,7 @@ public class IAEnemigo : MonoBehaviour {
 				if(distance <= 1.5f){
 					//para animaciones de covertura
 
-					aiState=AIstate.Atack;
+					aiState=AIstate.InCover;
 
 				}
 		}
@@ -127,34 +179,44 @@ public class IAEnemigo : MonoBehaviour {
 	}
 
 	
-	bool decision;
+
 	void Attack(){
 		agent.Stop ();
 		anim.SetFloat ("girar", 0);
 		anim.SetFloat ("avanzar", 0);
-		anim.SetBool ("apuntar", true);
+
 		charMove.Move(Vector3.zero,true,Vector3.zero);//deteien el movimiento del enemigo
-		Vector3 direction = enemyToAtack.transform.position - transform.position;
+		//angulo del enemigo 
+		Vector3 direction = lastKnowPosition - transform.position;
 		float angle = Vector3.Angle (direction, transform.forward);
+
 		if (angle < 110f * 0.5f) {
-			transform.LookAt(enemyToAtack.transform.position);
+
+			//anim.SetBool ("apuntar", true);
+			transform.LookAt(lastKnowPosition);
 
 
 		}
 		atackTimer += Time.deltaTime;
+
 		if(atackTimer > atackRate){
+			
 			if (tenemosMUnicion (weponManger.activeWeapon)) {
 				
-				anim.SetBool ("disparar", true);
+				//anim.SetBool ("disparar", true);
+				timesFired++;
 				shootRay ();
 			} else {
-				
+				timesFired++;
+				shootRay ();
 					
-				if (regresaIntRandmo() >= 5) {
+				/*if (regresaIntRandmo() >= 5) {
+					Debug.Log ("Enemigo Decidio Recargar");
 					RecargarArmaActiva ();
 				} else {
+					Debug.Log ("Enemigo Decidio cambiar arma");
 					weponManger.changeWeapon (true);
-				}
+				}*/
 			}
 			atackTimer = 0;
 		}
@@ -163,7 +225,7 @@ public class IAEnemigo : MonoBehaviour {
 	}
 
 	void Patrolling(){
-		agent.speed = 1;
+		agent.speed = 1f;
 		if (wayPoints.Count > 0) {
 
 			if (agent.remainingDistance < agent.stoppingDistance) {
@@ -211,13 +273,20 @@ public class IAEnemigo : MonoBehaviour {
 					//	Debug.DrawRay (hitColliders [i].transform.position + Vector3.up, direction + Vector3.up);
 
 					if (!hitColliders [i].gameObject.GetComponent<objetodeCovertura> ().owner) {
-						Vector3 direction = enemyToAtack.transform.position - hitColliders [i].transform.position;
+						/*Vector3 direction = enemyToAtack.transform.position - hitColliders [i].transform.position;
 						float dis = Vector3.Distance (hitColliders [i].transform.position, enemyToAtack.transform.position);//pared
+					
 						RaycastHit hit;
 						Debug.DrawRay (hitColliders [i].transform.position + Vector3.up/2, direction + Vector3.up/2);
 						if (Physics.Raycast (hitColliders [i].transform.position + Vector3.up/2, direction + Vector3.up/2,  out hit, dis)) { //up para que no este muy cerca del suelo
-							if (hit.collider.gameObject.isStatic) {
+							if (hit.collider.gameObject.isStatic) {*/
 //								Debug.Log ("Entro22222222222222");
+						Vector3 direction =enemyToAtack.transform.position-hitColliders[i].transform.position;
+						Vector3 forward = hitColliders [i].transform.forward;
+						float angle = Vector3.Angle (direction, forward);
+						if(angle<110f*.5f){
+							
+						
 								if (!avaliableCover.Contains (hitColliders [i].transform)) {
 									avaliableCover.Add (hitColliders [i].transform);
 								}
@@ -226,7 +295,7 @@ public class IAEnemigo : MonoBehaviour {
 					}
 				}
 			}
-		} else {//si no hay covertruras
+		else {//si no hay covertruras
 			//attack
 			//Debug.Log("no colliders");
 		}
@@ -235,18 +304,29 @@ public class IAEnemigo : MonoBehaviour {
 
 	void takeCover(){
 		if (closestCover == null) {
+			/*objMc= closestCover.GetComponent<objetodeCovertura> ();
+			if (objMc.owner != this.gameObject) {
+			
+			}*/
 			if (avaliableCover.Count > 0) {
 				Transform clCover = avaliableCover [0];
+
 				float distance = Vector3.Distance (transform.position, avaliableCover [0].transform.position);
 				for (int i = 0; i < avaliableCover.Count; i++) {
-					float tempDistance = Vector3.Distance (transform.position, avaliableCover [i].transform.position);
-					if (tempDistance < distance) {
-						clCover = avaliableCover [i];//covertura mas cercana
-					}
-					if (i == avaliableCover.Count - 1) {
-						closestCover = clCover.gameObject;
-					}
+					//avaliableCover [i].GetComponent<objetodeCovertura> ().owner = this.gameObject;
+					if (avaliableCover [i].GetComponent<objetodeCovertura> ().owner != this.gameObject) {
+						float tempDistance = Vector3.Distance (transform.position, avaliableCover [i].transform.position);
+						if (tempDistance < distance) {
+							clCover = avaliableCover [i];//covertura mas cercana
+							distance = tempDistance;
 
+						}
+						if (i == avaliableCover.Count - 1) {
+							closestCover = clCover.gameObject;
+							clCover.GetComponent<objetodeCovertura> ().owner = this.gameObject; 
+						}
+
+					}
 				}
 			} else {
 				FindCoves ();
@@ -256,31 +336,72 @@ public class IAEnemigo : MonoBehaviour {
 		}
 	}
 
+	void inCOver(){
+		agent.Stop ();
 
+		anim.SetFloat ("girar", 0);
+		anim.SetFloat ("avanzar", 0);
+		transform.LookAt(enemyToAtack.transform.position);
+		//Debug.Log("covertura  "+takingCOver);
+		anim.SetBool ("covertura", takingCOver);
+		transform.rotation = closestCover.transform.rotation;
+
+		if (!attacking) {
+			
+			atackTimer += Time.deltaTime;
+			if (atackTimer > atackRate) {
+				takingCOver = false;
+				attacking = true;
+				atackTimer = 0;
+
+			} else {
+				takingCOver = true;
+			}
+		} else {
+			takingCOver = true;
+			anim.SetBool ("apuntar", true);
+			atackTimer += Time.deltaTime;
+			if(atackTimer>atackRate/2){
+				if (InSIght) {
+					Attack ();
+				} else {
+//					Debug.Log ("ningun enemigo a la vista");
+				}
+
+			}
+		}
+		if(timesFired > 3){
+			attacking = false;
+			takingCOver = true;
+			timesFired = 0;
+			anim.SetBool ("apuntar", false);
+		}
+	}
 
 	void OnAnimatorIK(){
 		if (enemyToAtack) {
 			anim.SetLookAtWeight (1, 0.8f, 1, 1, 1);
 
-			anim.SetLookAtPosition (enemyToAtack.transform.position);
-			//anim.SetLayerWeight
-//			anim.SetIKRotation(enemyToAtack.transform.rotation);
-			//
+
+			anim.SetLookAtPosition (lastKnowPosition);
+		
+		
 		} else {
 			anim.SetLayerWeight (0, 0);
 		}
 	}
 
 	void shootRay(){
-		Debug.Log("ENIMGO:Disparo");
+		//Debug.Log("ENIMGO:Disparo");
 
 		RaycastHit hit;
-		GameObject go = Instantiate (weponManger.BulletPrefab, transform.position, Quaternion.identity)as GameObject;
+		GameObject go = Instantiate (weponManger.BulletPrefab, Vector3.zero, Quaternion.identity)as GameObject;
+		//Debug.Log ("instanciado en "+transform.position);
 		LineRenderer line = go.GetComponent<LineRenderer> ();
 		Vector3 startPos = weponManger.activeWeapon.bulletSpawn.TransformPoint(Vector3.zero);
 		Vector3 EndPos = Vector3.zero;
-		int mask=~(1<<7);//layers
-		Vector3 directionToAttack = enemyToAtack.transform.position - transform.position;
+		int mask=~(1<<9);//layers
+		Vector3 directionToAttack = lastKnowPosition - transform.position;
 		if(Physics.Raycast(startPos,directionToAttack,out hit,Mathf.Infinity,mask)){
 			float distance=Vector3.Distance(weponManger.activeWeapon.bulletSpawn.transform.position,hit.point);
 			RaycastHit[]hits=Physics.RaycastAll(startPos,hit.point-startPos,distance);
@@ -307,7 +428,7 @@ public class IAEnemigo : MonoBehaviour {
 		weponManger.activeWeapon.curAmmo--;
 	}
 
-static bool compararArma(controlDeArmasEnemigo armaE,controlDeArmasJugador armaJ ){
+static bool compararArma(controlDeArmasEnemigo armaE,controlDeArmasEnemigo armaJ ){
 		bool retVal = false;
 		Debug.Log ("Arma del JUGADOR" + armaJ.wepoType.ToString ());
 		Debug.Log ("Arma del Enemigo" + armaE.wepoType.ToString());
@@ -333,6 +454,33 @@ static bool compararArma(controlDeArmasEnemigo armaE,controlDeArmasJugador armaJ
 	}
 		return retVal;
 	}
+
+static bool compararArma(controlDeArmasEnemigo armaE,controlDeArmasJugador armaJ ){
+	bool retVal = false;
+	Debug.Log ("Arma del JUGADOR" + armaJ.wepoType.ToString ());
+	Debug.Log ("Arma del Enemigo" + armaE.wepoType.ToString());
+
+	if(armaE.wepoType.ToString() == armaJ.wepoType.ToString()){
+		//decider
+		//posibilidad de atacar del 50 %
+		int random=Random.Range(0,11);
+		Debug.Log ("tiene la misma Arma");
+		if(random<= 5){
+			Debug.Log ("tiene la misma Arma y ataco con valor "+random);
+			retVal = true;
+		}
+	}else{
+		if (armaE.wepoType == managerDeArmasEnemigo.WeaponType.Rifle) {
+			Debug.Log ("rifle en el no jugador");	
+			retVal = true;
+		}if(armaJ.wepoType.ToString()== managerDeArmasEnemigo.WeaponType.Pistol.ToString()){
+			Debug.Log ("el jugador sua una pistola");	
+			retVal = true;
+
+		}
+	}
+	return retVal;
+}
 
 static bool tenemosMUnicion(controlDeArmasEnemigo aW){
 		if (aW.curAmmo > 0) {
@@ -361,4 +509,24 @@ void RecargarArmaActiva(){
 	}
 }
 
+void LookForEnemy(){
+		RaycastHit hit;
+		Vector3 direction = enemyToAtack.transform.position - transform.position;
+	Debug.DrawRay (weponManger.activeWeapon.bulletSpawn.TransformPoint(Vector3.zero), direction, Color.red, 0.2f);
+	if (Physics.Raycast (weponManger.activeWeapon.bulletSpawn.TransformPoint(Vector3.zero), direction, out hit)) {
+			if (hit.transform.root.GetComponent<statsDePersonajes> ()) {
+				if (hit.transform.root.GetComponent<statsDePersonajes> ().Id != GetComponent<statsDePersonajes> ().Id) {
+					Debug.Log ("en vision");
+					lastKnowPosition = enemyToAtack.transform.position;
+					InSIght = true;
+				} else {
+					
+				}
+			} else {
+				InSIght = false;
+			}
+		} else {
+		InSIght = false;
+	}
+}
 }
