@@ -1,7 +1,7 @@
 #pragma strict
 var estilo:GUIStyle;
 function Start () {
-
+	Screen.lockCursor=false;
 }
 
 function Update () {
