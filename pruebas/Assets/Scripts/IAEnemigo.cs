@@ -11,7 +11,7 @@ public class IAEnemigo : MonoBehaviour {
 	public GameObject wayPointHolder;
 	public List<Transform> wayPoints = new List<Transform> ();
 	float targetToleracian=1;
-	static managerDeArmasEnemigo weponManger;
+	 managerDeArmasEnemigo weponManger;
 	Vector3 targetPos;
 	Animator anim;
 	bool InSIght=true;
@@ -182,8 +182,8 @@ public class IAEnemigo : MonoBehaviour {
 
 	void Attack(){
 		agent.Stop ();
-		anim.SetFloat ("girar", 0);
-		anim.SetFloat ("avanzar", 0);
+		//anim.SetFloat ("girar", 0);
+		//anim.SetFloat ("avanzar", 0);
 
 		charMove.Move(Vector3.zero,true,Vector3.zero);//deteien el movimiento del enemigo
 		//angulo del enemigo 
@@ -339,13 +339,13 @@ public class IAEnemigo : MonoBehaviour {
 	void inCOver(){
 		agent.Stop ();
 
-		anim.SetFloat ("girar", 0);
+		//anim.SetFloat ("girar", 0);
 		anim.SetFloat ("avanzar", 0);
-		transform.LookAt(enemyToAtack.transform.position);
+		transform.LookAt(lastKnowPosition);
 		//Debug.Log("covertura  "+takingCOver);
 		anim.SetBool ("covertura", takingCOver);
-		transform.rotation = closestCover.transform.rotation;
-
+	//transform.rotation = closestCover.transform.rotation;
+		//anim.SetLayerWeight (2, 0f);
 		if (!attacking) {
 			
 			atackTimer += Time.deltaTime;
@@ -355,17 +355,18 @@ public class IAEnemigo : MonoBehaviour {
 				atackTimer = 0;
 
 			} else {
-				takingCOver = true;
+				//takingCOver = true;
 			}
 		} else {
-			takingCOver = true;
+			
+			//takingCOver = true;
 			anim.SetBool ("apuntar", true);
 			atackTimer += Time.deltaTime;
 			if(atackTimer>atackRate/2){
 				if (InSIght) {
 					Attack ();
 				} else {
-//					Debug.Log ("ningun enemigo a la vista");
+					Debug.Log ("ningun enemigo a la vista");
 				}
 
 			}
@@ -380,11 +381,9 @@ public class IAEnemigo : MonoBehaviour {
 
 	void OnAnimatorIK(){
 		if (enemyToAtack) {
-			anim.SetLookAtWeight (1, 0.8f, 1, 1, 1);
-
-
-			anim.SetLookAtPosition (lastKnowPosition);
-		
+			//anim.SetLookAtWeight (1, 1, 1, 1, 1,0);
+			//Debug.Log("enemigo a atatacar");
+			anim.SetLookAtPosition (lastKnowPosition -(new Vector3 (0, 1, 0)));
 		
 		} else {
 			anim.SetLayerWeight (0, 0);
@@ -400,8 +399,10 @@ public class IAEnemigo : MonoBehaviour {
 		LineRenderer line = go.GetComponent<LineRenderer> ();
 		Vector3 startPos = weponManger.activeWeapon.bulletSpawn.TransformPoint(Vector3.zero);
 		Vector3 EndPos = Vector3.zero;
-		int mask=~(1<<9);//layers
-		Vector3 directionToAttack = lastKnowPosition - transform.position;
+		int mask=~(1<<10);//layers
+		//Vector3 directionNueva = enemyToAtack.transform.position ;//para que apunte mas abajo 
+
+		Vector3 directionToAttack = (lastKnowPosition- (new Vector3 (0, 1, 0)) - transform.position);
 		if(Physics.Raycast(startPos,directionToAttack,out hit,Mathf.Infinity,mask)){
 			float distance=Vector3.Distance(weponManger.activeWeapon.bulletSpawn.transform.position,hit.point);
 			RaycastHit[]hits=Physics.RaycastAll(startPos,hit.point-startPos,distance);
@@ -420,6 +421,10 @@ public class IAEnemigo : MonoBehaviour {
 				/*else if(hit2.transform.transform.GetComponent<statsDePersonajes>()){
 
 				}*/
+				if (hit2.transform.root.GetComponent<statsDePersonajes> ()) {
+					statsDePersonajes sta = hit2.transform.root.GetComponent<statsDePersonajes> ();
+					sta.health -= 50;
+				}
 			}
 			EndPos=hit.point;
 		}
@@ -510,9 +515,13 @@ void RecargarArmaActiva(){
 }
 
 void LookForEnemy(){
+
+
+	
 		RaycastHit hit;
-		Vector3 direction = enemyToAtack.transform.position - transform.position;
-	Debug.DrawRay (weponManger.activeWeapon.bulletSpawn.TransformPoint(Vector3.zero), direction, Color.red, 0.2f);
+		Vector3 directionNueva = enemyToAtack.transform.position - (new Vector3 (0, 1, 0));//para que apunte mas abajo 
+	Vector3 direction = directionNueva- transform.position;
+	Debug.DrawRay (weponManger.activeWeapon.bulletSpawn.TransformPoint(Vector3.zero),direction, Color.red, 0.2f);
 	if (Physics.Raycast (weponManger.activeWeapon.bulletSpawn.TransformPoint(Vector3.zero), direction, out hit)) {
 			if (hit.transform.root.GetComponent<statsDePersonajes> ()) {
 				if (hit.transform.root.GetComponent<statsDePersonajes> ().Id != GetComponent<statsDePersonajes> ().Id) {

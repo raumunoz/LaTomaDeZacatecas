@@ -72,13 +72,13 @@ AnimatorController:
     m_BlendingMode: 0
     m_SyncedLayerIndex: -1
     m_DefaultWeight: 0
-    m_IKPass: 1
+    m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
     m_Name: cuerpoSuperior
     m_StateMachine: {fileID: 110727440}
-    m_Mask: {fileID: 101100000, guid: a15220fe87ab53e4fbd80161cf767312, type: 2}
+    m_Mask: {fileID: 0}
     m_Motions:
     - serializedVersion: 2
       m_State: {fileID: 0}
@@ -97,7 +97,7 @@ AnimatorController:
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 1
-    m_SyncedLayerIndex: -1
+    m_SyncedLayerIndex: 0
     m_DefaultWeight: 1
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0

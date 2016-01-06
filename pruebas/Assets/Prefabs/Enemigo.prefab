@@ -1931,7 +1931,7 @@ GameObject:
   - 114: {fileID: 11465788}
   - 114: {fileID: 11485676}
   m_Layer: 2
-  m_Name: Enemigo 1
+  m_Name: Enemigo
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2293,7 +2293,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 132.2, y: 0.18, z: 34.36}
+  m_LocalPosition: {x: 142.3, y: 0, z: 34.36}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 409958}
@@ -5827,7 +5827,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000027093004, y: -0.4172999, z: -0.017300118}
+  m_ConnectedAnchor: {x: -0.0000027093097, y: -0.41729996, z: -0.01730012}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
