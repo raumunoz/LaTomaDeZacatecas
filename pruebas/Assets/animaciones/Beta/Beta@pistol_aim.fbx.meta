@@ -182,7 +182,7 @@ ModelImporter:
       name: pistol_aim
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 213
+      lastFrame: 5
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -192,13 +192,13 @@ ModelImporter:
       loopTime: 1
       loopBlend: 1
       loopBlendOrientation: 1
-      loopBlendPositionY: 0
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1
       heightFromFeet: 0
-      mirror: 0
+      mirror: 1
       bodyMask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
       curves: []
       events: []
@@ -347,7 +347,7 @@ ModelImporter:
         weight: 1
       maskType: 1
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 24.65
     isReadable: 1
   meshes:
     lODScreenPercentages: []

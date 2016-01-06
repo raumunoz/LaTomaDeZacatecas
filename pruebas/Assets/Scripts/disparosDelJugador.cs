@@ -5,10 +5,9 @@ public class disparosDelJugador : MonoBehaviour {
 	//float cadenciaDeDisparo = .5f;
 	//float espera =0;
 	private float danio;
+
 	// Use this for initialization
-	void Start () {
-	
-	}
+
 	
 	// Update is called once per frame
 	/*void Update () {
@@ -20,13 +19,7 @@ public class disparosDelJugador : MonoBehaviour {
 
 	public void disparo(float danioEx){
 		danio = danioEx;
-//		anim.SetInteger ("cartuchos", anim.GetInteger("cartuchos")-1);
-		/*if (espera > 0) {
-			return;
-		}*/
-	//	Debug.Log("Disparo¡¡¡¡");
-	//	Vector3 puntoDeImpacto;
-	//espera = cadeDisparo;
+
 		Ray ray = new Ray (Camera.main.transform.position, Camera.main.transform.forward);
 		//Transform impactoTransformMasCercano(ray);
 		Transform impactoTransform;
@@ -74,8 +67,23 @@ Transform impactoTransformMasCercano(Ray ray, out Vector3 puntoimpacto){
 				//b)la primera cosa que impactamos no somos nosotoros
 				//c) si, no es b, es la cosa mas cercana que la cosa mas cercana
 				impactoMasCercano= impacto.transform;
+				Vector3 direccion = impactoMasCercano.position - transform.position;
+				direccion = direccion.normalized;
 				distancia= impacto.distance;
+
+				//Debug.DrawRay (transform.position, direccion + impactoMasCercano.transform, Color.red, Mathf.Infinity);
 				puntoimpacto=impacto.point;
+				if(impactoMasCercano.GetComponent<Rigidbody>()){
+					if(impactoMasCercano.root.GetComponent<statsDePersonajes>()){
+						//impactoMasCercano.GetComponent<Rigidbody> ().AddForce (direccion * 200);
+					//managerDeRagDoll rgM = impactoMasCercano.root.GetComponent<managerDeRagDoll> ();
+					//rgM.RagdollCharacter ();
+						statsDePersonajes cStats=impactoMasCercano.root.GetComponent<statsDePersonajes>();
+						cStats.HitDetectionPArt (impactoMasCercano);
+					}
+					impactoMasCercano.GetComponent<Rigidbody> ().AddForce (direccion * 200);
+
+				}
 
 			}
 		

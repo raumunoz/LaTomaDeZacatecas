@@ -143,7 +143,7 @@ public class inputParaEnemigo : MonoBehaviour {
 		float y = Screen.height / 2;
 		Ray ray = Camera.main.ScreenPointToRay (new Vector3 (x, y, 0));
 		RaycastHit hit;
-		GameObject go = Instantiate (bulletPrefab, transform.position, Quaternion.identity)as GameObject;
+		GameObject go = Instantiate (bulletPrefab, Vector3.zero, Quaternion.identity)as GameObject;
 		LineRenderer line = go.GetComponent<LineRenderer> ();
 		Vector3 starPos = weaponManager.activeWeapon.bulletSpawn.TransformPoint (Vector3.zero);
 		Vector2 endPos = Vector3.zero;

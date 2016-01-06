@@ -44,7 +44,7 @@ public class disparoColt44 : StateMachineBehaviour {
 		//Transform bone = GetComponent<Animator>().avatar.GetBone(BoneType.LeftShoulder);
 
 
-		Debug.Log("Posicion del hgueso -----------------"+posicionHueso.position+"----------------------");
+//		Debug.Log("Posicion del hgueso -----------------"+posicionHueso.position+"----------------------");
 		//funcionesDeCamara.miraMovedizaCamara ();
 		Instantiate (esfera, posicionHueso.position,posicionHueso.rotation);
 
