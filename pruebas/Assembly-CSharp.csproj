@@ -115,6 +115,7 @@
      <Compile Include="Assets\VolumetricLines\Scripts\VolumetricLineBehavior.cs" />
      <Compile Include="Assets\VolumetricLines\Scripts\VolumetricLineStripBehavior.cs" />
      <Compile Include="Assets\VolumetricLines\Scripts\VolumetricMultiLineBehavior.cs" />
+     <Compile Include="Assets\managerDeRagDoll.cs" />
      <Compile Include="Assets\objetodeCovertura.cs" />
      <None Include="Assets\Scripts\SpritePacker\Shaders\BlendAlpha.shader" />
      <None Include="Assets\Scripts\SpritePacker\Shaders\Add+1.shader" />
