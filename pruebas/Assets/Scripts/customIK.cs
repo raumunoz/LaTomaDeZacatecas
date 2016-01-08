@@ -52,21 +52,21 @@ public class customIK : MonoBehaviour {
 		handAxisCorrection.transform.parent = foreArmAxisCorrection.transform;
 
 	}
-	/*void Update(){
+	void Update(){
 		if (anim.GetCurrentAnimatorStateInfo (1).IsTag ("apuntar")) {
 			isEneable = true;
 		} else {
 			isEneable = false;
 		}
-	}*/
+	}
 	
 	// Update is called once per frame
 	//para que la animacion se reproduca y al final del cuadro realizar los cambios
-	/*void LateUpdate () {
+	void LateUpdate () {
 		if(isEneable){
 			calculateIK();
 		}
-	}*/
+	}
 
 	void calculateIK(){
 		if(target==null){
