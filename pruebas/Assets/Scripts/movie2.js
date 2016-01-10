@@ -23,6 +23,6 @@ function Start () {
 
 function Update(){
          if(movTexture.isPlaying != true){
-         	Application.LoadLevel(0);
+         	Application.LoadLevel(13);
          }
 }
