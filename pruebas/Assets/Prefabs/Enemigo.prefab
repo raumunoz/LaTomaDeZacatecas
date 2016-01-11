@@ -4655,17 +4655,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52615d676851e4942b3b788f25c7fbf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wayPointHolder: {fileID: 0}
-  wayPoints: []
-  waitingTime: 4
-  atackRate: 4
-  atackTimer: 4
-  closestCover: {fileID: 0}
-  Enemies: []
-  enemyToAtack: {fileID: 0}
-  avaliableCover: []
-  timesFired: 0
-  aiState: 0
 --- !u!114 &11485676
 MonoBehaviour:
   m_ObjectHideFlags: 1

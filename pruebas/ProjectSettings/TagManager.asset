@@ -13,6 +13,7 @@ TagManager:
   - managerMIra
   - objetivo
   - canionWinchester
+  - salir
   layers:
   - Default
   - TransparentFX

@@ -56,6 +56,8 @@
      <Compile Include="Assets\Scripts\movie.js" />
      <Compile Include="Assets\Scripts\movie1.js" />
      <Compile Include="Assets\Scripts\movie2.js" />
+     <Compile Include="Assets\Scripts\moviescreditos.js" />
+     <Compile Include="Assets\Scripts\musica.js" />
      <Compile Include="Assets\Scripts\rotaArma.js" />
      <Compile Include="Assets\Scripts\temporizador balas.js" />
      <Compile Include="Assets\Scripts\temporizadorBalas.js" />
