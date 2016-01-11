@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Niveles/MenuPrincipal.unity
+=======
+- path: Assets/escenas/nueva.unity
+>>>>>>> cambiosRau
   isLoaded: 1
   isActive: 1
