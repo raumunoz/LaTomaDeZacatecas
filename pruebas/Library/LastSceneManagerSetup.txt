@@ -1,4 +1,12 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Niveles/GamePlay_1.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Niveles/MenuPrincipal.unity
+=======
+- path: Assets/escenas/nueva.unity
+>>>>>>> cambiosRau
+>>>>>>> origin/master
   isLoaded: 1
   isActive: 1
