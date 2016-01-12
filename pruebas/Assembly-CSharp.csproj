@@ -55,7 +55,6 @@
      <Compile Include="Assets\Scripts\GaleriaArma.cs" />
      <Compile Include="Assets\Scripts\GaleriaEdificio.cs" />
      <Compile Include="Assets\Scripts\GaleriaPersonaje.cs" />
-     <Compile Include="Assets\Scripts\IAEnemigo.cs" />
      <Compile Include="Assets\Scripts\Opciones.cs" />
      <Compile Include="Assets\Scripts\Paused.cs" />
      <Compile Include="Assets\Scripts\Permanencia.cs" />
@@ -104,7 +103,6 @@
      <Compile Include="Assets\Scripts\scriptsMaquinaDeEstados\reproducirAudioAleatorio.cs" />
      <Compile Include="Assets\Scripts\scriptsMaquinaDeEstados\vaciarCartucho.cs" />
      <Compile Include="Assets\Scripts\seguirObjetivo.cs" />
-     <Compile Include="Assets\Scripts\statsDePersonajes.cs" />
      <Compile Include="Assets\Scripts\vistaDeCamaraLibre.cs" />
      <Compile Include="Assets\VolumetricLines\ExampleScenes\ExampleScripts\CannonBehavior.cs" />
      <Compile Include="Assets\VolumetricLines\ExampleScenes\ExampleScripts\CreateSinShapedLineStrip.cs" />
